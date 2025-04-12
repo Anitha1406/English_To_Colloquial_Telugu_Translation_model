@@ -78,11 +78,31 @@ This model is intended for generating colloquial Telugu translations from Englis
 - May not perform well on formal or domain-specific text.
 - Can sometimes produce literal rather than context-aware translations.
 
+## Model Access
+
+This model is hosted on Hugging Face for easy access:
+
+- **Hugging Face Model Page:**  
+  👉 [anithasoma/nllb-finetuned-telugu](https://huggingface.co/anithasoma/nllb-finetuned-telugu)
+
+You can load the model in your Python scripts using the `transformers` library:
+
+```python
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
+tokenizer = AutoTokenizer.from_pretrained("anithasoma/nllb-finetuned-telugu")
+model = AutoModelForSeq2SeqLM.from_pretrained("anithasoma/nllb-finetuned-telugu")
+
+def translate(text):
+    inputs = tokenizer(text, return_tensors="pt")
+    outputs = model.generate(**inputs)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+print(translate("Hello, how are you?"))
+
 ### License
 This model is licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## Contributors
 Developed by **[anithasoma](https://huggingface.co/anithasoma)** as part of the SAWiT AI Hackathon.
 
----
-*For feedback or collaboration, reach out via Hugging Face!* 🚀
