@@ -1,0 +1,10 @@
+license: "apache-2.0"
+datasets:
+  - "anithasoma/anitha_colloquial_en_te"
+base_model: "facebook/nllb-200-distilled-600M"
+pipeline_tag: "translation"
+metrics:
+  - type: "bleu"
+    value: 43.12
+  - type: "sacrebleu"
+    value: 43.12
